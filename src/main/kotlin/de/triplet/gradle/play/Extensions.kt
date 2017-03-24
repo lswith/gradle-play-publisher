@@ -3,14 +3,14 @@ package de.triplet.gradle.play
 import org.gradle.api.Project
 import java.io.File
 
-fun String.normalize() = replace(Regex("\\r\\n"), "\n").trim()
+internal fun String.normalize() = replace(Regex("\\r\\n"), "\n").trim()
 
-fun File.readAndTrim(project: Project, maxLength: Int, throwOnLengthLimit: Boolean): String {
+internal fun File.readAndTrim(project: Project, maxLength: Int, errorOnSizeLimit: Boolean): String {
     if (exists()) {
         val message = readText().normalize()
 
         if (message.length > maxLength) {
-            if (throwOnLengthLimit) {
+            if (errorOnSizeLimit) {
                 val relativePath = toRelativeString(project.file(RESOURCES_OUTPUT_PATH))
                 throw IllegalArgumentException("File '$relativePath' has reached the limit of $maxLength characters")
             }
@@ -24,7 +24,7 @@ fun File.readAndTrim(project: Project, maxLength: Int, throwOnLengthLimit: Boole
     return ""
 }
 
-fun File.firstLine(): String {
+internal fun File.firstLine(): String {
     if (exists()) {
         return bufferedReader().use { it.readLine() }
     }

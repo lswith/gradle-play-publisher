@@ -62,7 +62,7 @@ class PlayPublisherPlugin : Plugin<Project> {
             playResourcesTask.inputs.file(project.file("src/${variant.buildType.name}/play"))
             playResourcesTask.inputs.file(project.file("src/${variant.name}/play"))
 
-            playResourcesTask.outputFolder = project.file("build/outputs/play/${variant.name}")
+            playResourcesTask.outputFolder = project.file("$RESOURCES_OUTPUT_PATH/${variant.name}")
             playResourcesTask.description = "Collects play store resources for the ${variant.name.capitalize()} build"
             playResourcesTask.group = PLAY_STORE_GROUP
 

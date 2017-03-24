@@ -21,7 +21,7 @@ import com.google.api.services.androidpublisher.AndroidPublisher
 import com.google.api.services.androidpublisher.AndroidPublisherScopes
 import java.io.File
 
-class AndroidPublisherHelper {
+internal class AndroidPublisherHelper {
     companion object {
         fun init(extension: PlayPublisherPluginExtension, config: PlayAccountConfig?): AndroidPublisher {
             val credential: Credential
