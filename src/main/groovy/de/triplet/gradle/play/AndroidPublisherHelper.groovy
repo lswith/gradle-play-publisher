@@ -69,7 +69,7 @@ class AndroidPublisherHelper {
         return credential.createScoped(Collections.singleton(AndroidPublisherScopes.ANDROIDPUBLISHER))
     }
 
-    private HttpRequestInitializer setHttpTimeout(final HttpRequestInitializer requestInitializer, int timeout) {
+    private static HttpRequestInitializer setHttpTimeout(final HttpRequestInitializer requestInitializer, int timeout) {
         return new HttpRequestInitializer() {
             @Override
             public void initialize(HttpRequest httpRequest) throws IOException {
